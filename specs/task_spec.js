@@ -6,7 +6,11 @@ describe("Task Tests", function() {
   var task;
 
   beforeEach("Setup", function() {
-    task = new Task(1, 5, 30, true);
+    task = new Task("Change outfit", 1, 5, 30, true);
+  });
+
+  it("Task should have a description", function() {
+    assert.equal("Change outfit", task.description);
   });
 
   it("Task should have a difficulty level", function() {
@@ -23,6 +27,11 @@ describe("Task Tests", function() {
 
   it("Task should be marked as complete", function() {
     assert.equal(true, task.complete);
+  });
+
+  it("Prints out all task details as a string", function() {
+    task1 = new Task("Change into outfit", 1, 10, 10, true);
+    assert.equal("Description: Change into outfit, Difficulty: 1, Urgency: 10, Reward: 10, Completed: true", task1.printFullDetails());
   });
 
 })
