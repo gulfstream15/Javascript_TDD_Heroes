@@ -6,13 +6,13 @@ var Task = require("../task.js");
 describe("Hero Tests", function() {
 
   var hero;
-  var food;
+  var food1;
   var task1;
 
   beforeEach("Setup", function() {
-    food = new Food("Lasagne", 5);
+    hero = new Hero("Superman", 10, "Steak", true);
+    food1 = new Food("Lasagne", 2);
     task1 = new Task("Change into outfit", 1, 10, 10, true);
-    hero = new Hero("Superman", 10, "Steak", true, true);
   });
 
   it("Hero should have a name", function() {
@@ -31,8 +31,18 @@ describe("Hero Tests", function() {
     assert.equal(true, hero.can_say_name);
   });
 
-  it("Hero can eat food", function() {
-    assert.equal(true, hero.can_eat_food);
+  it("Should start with an empty stomach", function() {
+    assert.equal(0, hero.foods.length);
+  });
+
+  it("Should be able to eat food", function() {
+    hero.addFood(food1);
+    assert.equal(1, hero.foods.length);
+  });
+
+  it("Should be able to list stomach contents", function() {    
+    hero.addFood(food1);
+    assert.equal("Name: Lasagne, Replenishment Value: 2", hero.listFoods()[0]);
   });
 
   it("Hero should start with an empty task list", function() {
@@ -48,6 +58,11 @@ describe("Hero Tests", function() {
     hero.addTask(task1);
     assert.equal("Description: Change into outfit, Difficulty: 1, Urgency: 10, Reward: 10, Completed: true", hero.listTasks()[0]);
   });
+
+  // it("Should be able to eat food and get replenished", function() {
+  //   hero.eatFoodGetReplenished(food);
+  //   assert.equal(12, hero.health);
+  // });
 
 
 })
