@@ -5,6 +5,7 @@ function Hero(name, health, fav_food, can_say_name) {
   this.can_say_name = can_say_name;
   this.foods = [];
   this.tasks = [];
+  //this.items = [];
 }
 
 Hero.prototype = {
@@ -16,14 +17,12 @@ Hero.prototype = {
   listTasks: function() {
     var tasksList = this.tasks.map(function(task) {
       return task.printFullDetails()
-    })
+    });
     return tasksList;
   },
 
   addFood: function(food) {
     this.foods.push(food);
-    // console.log('food name is:' + food.name);
-    // console.log("fav food is:" + this.fav_food);
     if (food.name === this.fav_food) {
        this.health = this.health + food.replen_value * 1.5;
     } else {
@@ -34,14 +33,34 @@ Hero.prototype = {
   listFoods: function() {
     var foodsList = this.foods.map(function(food) {
       return food.printFullDetails()
-    })
+    });
     return foodsList;
   },
 
   checkHealth: function() {
      return this.health;
-  }
+  },
 
+  listTasksByDifficulty: function() {
+    var sortedListByDifficulty = this.tasks.sort(function (taskOne, taskTwo) {
+       return taskOne.difficulty < taskTwo.difficulty;
+    });
+    return sortedListByDifficulty;
+  },
+
+  listTasksByUrgency: function() {
+    var sortedListByUrgency = this.tasks.sort(function (taskOne, taskTwo) {
+       return taskOne.urgency < taskTwo.urgency;
+    });
+    return sortedListByUrgency;
+  },
+
+  listTasksByReward: function() {
+    var sortedListByReward = this.tasks.sort(function (taskOne, taskTwo) {
+       return taskOne.reward < taskTwo.reward;
+    });
+    return sortedListByReward;
+  }
 
 }
 

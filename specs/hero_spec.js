@@ -18,13 +18,13 @@ describe("Hero Tests", function() {
   beforeEach("Setup", function() {
     hero = new Hero("Superman", 10, "Steak", true);
 
-    food1 = new Food("Lasagne", 2);
+    food1 = new Food("Salad", 1);
     food2 = new Food("Steak", 10);
 
     task1 = new Task("Change into outfit", 1, 10, 1, true);
-    task2 = new Task("Stop speeding bus", 2, 15, 4, true);
-    task3 = new Task("Smack Lex Luthor", 3, 20, 10, true);
-    task4 = new Task("Save World", 10, 100, 120, true);
+    task2 = new Task("Stop speeding bus", 5, 150, 4, true);
+    task3 = new Task("Smack Lex Luthor", 3, 20, 130, true);
+    task4 = new Task("Save World", 1000, 100, 120, false);
   });
 
   it("Hero should have a name", function() {
@@ -54,7 +54,7 @@ describe("Hero Tests", function() {
 
   it("Should be able to list stomach contents", function() {    
     hero.addFood(food1);
-    assert.equal("Name: Lasagne, Replenishment Value: 2", hero.listFoods()[0]);
+    assert.equal("Name: Salad, Replenishment Value: 1", hero.listFoods()[0]);
   });
 
   it("Hero should start with an empty task list", function() {
@@ -66,6 +66,14 @@ describe("Hero Tests", function() {
     assert.equal(1, hero.tasks.length);
   });
 
+  it("Should be able to add multpile tasks to the task list", function() {
+    hero.addTask(task1);
+    hero.addTask(task2);
+    //hero.addTask(task3);
+    //hero.addTask(task4);
+    assert.equal(2, hero.tasks.length);
+  });
+
   it("Should be able to list the tasks", function() {    
     hero.addTask(task1);
     assert.equal("Description: Change into outfit, Difficulty: 1, Urgency: 10, Reward: 1, Completed: true", hero.listTasks()[0]);
@@ -73,7 +81,7 @@ describe("Hero Tests", function() {
 
   it("Should be able to eat non-favourite food and health goes up", function() {
     hero.addFood(food1);
-    assert.equal(12, hero.checkHealth());
+    assert.equal(11, hero.checkHealth());
   });
 
   it("Should be able to eat favourite food and health goes up", function() {
@@ -81,5 +89,31 @@ describe("Hero Tests", function() {
     assert.equal(25, hero.checkHealth());
   });
 
+  it("Should be able to sort tasks by difficulty", function() {
+    hero.addTask(task1);
+    hero.addTask(task2);
+    hero.addTask(task3);
+    hero.addTask(task4);
+    hero.listTasksByDifficulty();
+    assert.equal("Description: Save World, Difficulty: 1000, Urgency: 100, Reward: 120, Completed: false", hero.listTasks()[0]);
+  });
+
+  it("Should be able to sort tasks by urgency", function() {
+    hero.addTask(task1);
+    hero.addTask(task2);
+    hero.addTask(task3);
+    hero.addTask(task4);
+    hero.listTasksByUrgency();
+    assert.equal("Description: Stop speeding bus, Difficulty: 5, Urgency: 150, Reward: 4, Completed: true", hero.listTasks()[0]);
+  });
+
+  it("Should be able to sort tasks by reward", function() {
+    hero.addTask(task1);
+    hero.addTask(task2);
+    hero.addTask(task3);
+    hero.addTask(task4);
+    hero.listTasksByReward();
+    assert.equal("Description: Smack Lex Luthor, Difficulty: 3, Urgency: 20, Reward: 130, Completed: true", hero.listTasks()[0]);
+  });
 
 })
