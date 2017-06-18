@@ -6,15 +6,25 @@ var Task = require("../task.js");
 describe("Hero Tests", function() {
 
   var hero;
+
   var task1;
+  var task2;
+  var task3;
+  var task4;
+
   var food1;
   var food2;
 
   beforeEach("Setup", function() {
     hero = new Hero("Superman", 10, "Steak", true);
+
     food1 = new Food("Lasagne", 2);
     food2 = new Food("Steak", 10);
-    task1 = new Task("Change into outfit", 1, 10, 10, true);
+
+    task1 = new Task("Change into outfit", 1, 10, 1, true);
+    task2 = new Task("Stop speeding bus", 2, 15, 4, true);
+    task3 = new Task("Smack Lex Luthor", 3, 20, 10, true);
+    task4 = new Task("Save World", 10, 100, 120, true);
   });
 
   it("Hero should have a name", function() {
@@ -58,7 +68,7 @@ describe("Hero Tests", function() {
 
   it("Should be able to list the tasks", function() {    
     hero.addTask(task1);
-    assert.equal("Description: Change into outfit, Difficulty: 1, Urgency: 10, Reward: 10, Completed: true", hero.listTasks()[0]);
+    assert.equal("Description: Change into outfit, Difficulty: 1, Urgency: 10, Reward: 1, Completed: true", hero.listTasks()[0]);
   });
 
   it("Should be able to eat non-favourite food and health goes up", function() {
