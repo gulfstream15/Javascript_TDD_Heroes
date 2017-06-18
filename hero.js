@@ -22,6 +22,7 @@ Hero.prototype = {
 
   addFood: function(food) {
     this.foods.push(food);
+    this.health += food.replen_value;
   },
 
   listFoods: function() {
@@ -29,19 +30,12 @@ Hero.prototype = {
       return food.printFullDetails()
     })
     return foodsList;
+  },
+
+  checkHealth: function() {
+     return this.health;
   }
 
-  // eatFoodGetReplenished: function(food) {
-  //    this.health =+ food.replen_value;
-  // }
-
-  // getReplenished: function(can_eat_food) {
-  //   if (this.can_eat_food === true) {
-  //     return "Sorry you can't afford this record";
-  //   }
-  //   this.cash -= record.price;
-  //   this.collection.push(record);
-  // }
 
 }
 

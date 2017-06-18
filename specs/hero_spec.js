@@ -59,10 +59,10 @@ describe("Hero Tests", function() {
     assert.equal("Description: Change into outfit, Difficulty: 1, Urgency: 10, Reward: 10, Completed: true", hero.listTasks()[0]);
   });
 
-  // it("Should be able to eat food and get replenished", function() {
-  //   hero.eatFoodGetReplenished(food);
-  //   assert.equal(12, hero.health);
-  // });
+  it("Should be able to eat food and get replenished", function() {
+    hero.addFood(food1);
+    assert.equal(12, hero.checkHealth());
+  });
 
 
 })
