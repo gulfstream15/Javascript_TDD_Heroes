@@ -116,4 +116,13 @@ describe("Hero Tests", function() {
     assert.equal("Description: Smack Lex Luthor, Difficulty: 3, Urgency: 20, Reward: 130, Completed: true", hero.listTasks()[0]);
   });
 
+  // it("Should be able to show tasks completed", function() {
+  //   hero.addTask(task1);
+  //   hero.addTask(task2);
+  //   hero.addTask(task3);
+  //   hero.addTask(task4);
+  //   var completedTasks = hero.listCompletedTasks();
+  //   assert.equal(4, completedTasks.length);
+  // });
+
 })

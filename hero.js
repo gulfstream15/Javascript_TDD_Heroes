@@ -5,7 +5,6 @@ function Hero(name, health, fav_food, can_say_name) {
   this.can_say_name = can_say_name;
   this.foods = [];
   this.tasks = [];
-  //this.items = [];
 }
 
 Hero.prototype = {
@@ -60,7 +59,15 @@ Hero.prototype = {
        return taskOne.reward < taskTwo.reward;
     });
     return sortedListByReward;
-  }
+  },
+
+  // listCompletedTasks: function() {
+  //   var completedTasksList = this.tasks.map(function(task) {
+  //      return task.complete === true;
+  //   });
+  //   return completedTasksList;
+  //   console.log("size of completedTasksList", completedTasksList.length);
+  // }
 
 }
 
