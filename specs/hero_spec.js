@@ -6,12 +6,14 @@ var Task = require("../task.js");
 describe("Hero Tests", function() {
 
   var hero;
-  var food1;
   var task1;
+  var food1;
+  var food2;
 
   beforeEach("Setup", function() {
     hero = new Hero("Superman", 10, "Steak", true);
     food1 = new Food("Lasagne", 2);
+    food2 = new Food("Steak", 10);
     task1 = new Task("Change into outfit", 1, 10, 10, true);
   });
 
@@ -59,9 +61,14 @@ describe("Hero Tests", function() {
     assert.equal("Description: Change into outfit, Difficulty: 1, Urgency: 10, Reward: 10, Completed: true", hero.listTasks()[0]);
   });
 
-  it("Should be able to eat food and get replenished", function() {
+  it("Should be able to eat non-favourite food and health goes up", function() {
     hero.addFood(food1);
     assert.equal(12, hero.checkHealth());
+  });
+
+  it("Should be able to eat favourite food and health goes up", function() {
+    hero.addFood(food2);
+    assert.equal(25, hero.checkHealth());
   });
 
 

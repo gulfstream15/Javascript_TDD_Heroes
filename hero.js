@@ -22,7 +22,13 @@ Hero.prototype = {
 
   addFood: function(food) {
     this.foods.push(food);
-    this.health += food.replen_value;
+    // console.log('food name is:' + food.name);
+    // console.log("fav food is:" + this.fav_food);
+    if (food.name === this.fav_food) {
+       this.health = this.health + food.replen_value * 1.5;
+    } else {
+       this.health += food.replen_value;
+    }
   },
 
   listFoods: function() {
