@@ -69,9 +69,9 @@ describe("Hero Tests", function() {
   it("Should be able to add multpile tasks to the task list", function() {
     hero.addTask(task1);
     hero.addTask(task2);
-    //hero.addTask(task3);
-    //hero.addTask(task4);
-    assert.equal(2, hero.tasks.length);
+    hero.addTask(task3);
+    hero.addTask(task4);
+    assert.equal(4, hero.tasks.length);
   });
 
   it("Should be able to list the tasks", function() {    
@@ -88,6 +88,23 @@ describe("Hero Tests", function() {
     hero.addFood(food2);
     assert.equal(25, hero.checkHealth());
   });
+
+  // it("Should be able to sort tasks by difficulty", function(difficulty) {
+  //   hero.addTask(task1);
+  //   hero.addTask(task2);
+  //   hero.addTask(task3);
+  //   hero.addTask(task4);
+  //   var myTaskList = hero.listTasks();
+  //   for( task in myTaskList ) {
+  //     console.log("task before criteria is:", task);
+  //   } 
+  //   hero.listTasksByCriteria();
+  //   var mySortedTaskList = hero.listTasks();
+  //   for( task in mySortedTaskList ) {
+  //     console.log("task after criteria is:", task);
+  //   } 
+  //   // assert.equal("Description: Save World, Difficulty: 1000, Urgency: 100, Reward: 120, Completed: false", hero.listTasks()[0]);
+  // });
 
   it("Should be able to sort tasks by difficulty", function() {
     hero.addTask(task1);
@@ -116,13 +133,13 @@ describe("Hero Tests", function() {
     assert.equal("Description: Smack Lex Luthor, Difficulty: 3, Urgency: 20, Reward: 130, Completed: true", hero.listTasks()[0]);
   });
 
-  // it("Should be able to show tasks completed", function() {
-  //   hero.addTask(task1);
-  //   hero.addTask(task2);
-  //   hero.addTask(task3);
-  //   hero.addTask(task4);
-  //   var completedTasks = hero.listCompletedTasks();
-  //   assert.equal(4, completedTasks.length);
-  // });
+  it("Should be able to show tasks completed", function() {
+    hero.addTask(task1);
+    hero.addTask(task2);
+    hero.addTask(task3);
+    hero.addTask(task4);
+    var completedTasks = hero.listCompletedTasks();
+    assert.equal(3, completedTasks.length);
+  });
 
 })

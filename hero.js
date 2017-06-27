@@ -61,13 +61,32 @@ Hero.prototype = {
     return sortedListByReward;
   },
 
-  // listCompletedTasks: function() {
-  //   var completedTasksList = this.tasks.map(function(task) {
-  //      return task.complete === true;
+  // listTasksByCriteria: function(criteria) {
+  //   var sortedListByCriteria = this.tasks.sort(function (taskOne, taskTwo) {
+  //      return taskOne[criteria] < taskTwo[criteria];
   //   });
-  //   return completedTasksList;
-  //   console.log("size of completedTasksList", completedTasksList.length);
-  // }
+  //   return sortedListByCriteria;
+  // },
+
+  listCompletedTasks: function() {
+    var completedTasksList;
+    for( task in this.tasks ) {
+      if (task.complete === true) {
+        completedTasksList.push(task);
+      }
+    } 
+    return completedTasksList;
+  }
+
+  // addFood: function(food) {
+  //   this.foods.push(food);
+  //   if (food.name === this.fav_food) {
+  //      this.health = this.health + food.replen_value * 1.5;
+  //   } else {
+  //      this.health += food.replen_value;
+  //   }
+  // },
+
 
 }
 
