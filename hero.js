@@ -61,32 +61,12 @@ Hero.prototype = {
     return sortedListByReward;
   },
 
-  // listTasksByCriteria: function(criteria) {
-  //   var sortedListByCriteria = this.tasks.sort(function (taskOne, taskTwo) {
-  //      return taskOne[criteria] < taskTwo[criteria];
-  //   });
-  //   return sortedListByCriteria;
-  // },
-
   listCompletedTasks: function() {
-    var completedTasksList;
-    for( task in this.tasks ) {
-      if (task.complete === true) {
-        completedTasksList.push(task);
-      }
-    } 
-    return completedTasksList;
+    var completedTasksOnly = (this.tasks.filter(function(task) {
+       return (task.complete === true);
+    }));
+    return completedTasksOnly;
   }
-
-  // addFood: function(food) {
-  //   this.foods.push(food);
-  //   if (food.name === this.fav_food) {
-  //      this.health = this.health + food.replen_value * 1.5;
-  //   } else {
-  //      this.health += food.replen_value;
-  //   }
-  // },
-
 
 }
 

@@ -21,7 +21,7 @@ describe("Hero Tests", function() {
     food1 = new Food("Salad", 1);
     food2 = new Food("Steak", 10);
 
-    task1 = new Task("Change into outfit", 1, 10, 1, true);
+    task1 = new Task("Change into outfit", 4, 10, 2, true);
     task2 = new Task("Stop speeding bus", 5, 150, 4, true);
     task3 = new Task("Smack Lex Luthor", 3, 20, 130, true);
     task4 = new Task("Save World", 1000, 100, 120, false);
@@ -76,7 +76,7 @@ describe("Hero Tests", function() {
 
   it("Should be able to list the tasks", function() {    
     hero.addTask(task1);
-    assert.equal("Description: Change into outfit, Difficulty: 1, Urgency: 10, Reward: 1, Completed: true", hero.listTasks()[0]);
+    assert.equal("Description: Change into outfit, Difficulty: 4, Urgency: 10, Reward: 2, Completed: true", hero.listTasks()[0]);
   });
 
   it("Should be able to eat non-favourite food and health goes up", function() {
@@ -133,13 +133,13 @@ describe("Hero Tests", function() {
     assert.equal("Description: Smack Lex Luthor, Difficulty: 3, Urgency: 20, Reward: 130, Completed: true", hero.listTasks()[0]);
   });
 
-  it("Should be able to show tasks completed", function() {
+  it("Should be able to count completed tasks ", function() {
     hero.addTask(task1);
     hero.addTask(task2);
     hero.addTask(task3);
     hero.addTask(task4);
-    var completedTasks = hero.listCompletedTasks();
-    assert.equal(3, completedTasks.length);
+    var totalCompletedTasks = hero.listCompletedTasks().length;
+    assert.equal(3, totalCompletedTasks);
   });
 
 })
